@@ -26,17 +26,20 @@ export function countTags() {
   var $allElements = doc.querySelectorAll('*');
   console.log('doc all els', $allElements);
 
-  return $allElements;
+  // return $allElements;
 
-  // let myCount = {};
+  let myCount = {};
 
-  // $allElements.forEach( tag => {
-  //   console.log(tag.tagName);
+  $allElements.forEach( tag => {
+    console.log(tag.tagName);
+    let tagName = tag.tagName.toLowerCase();
     
-  //   myCount[tag.tagName] ? myCount[tag.tagName]++ : (myCount[tag.tagName] = 1)
-  // });
+    myCount[tagName] ? myCount[tagName]++ : (myCount[tagName] = 1)
+  });
 
-  // console.log('MY Count', myCount);
+  console.log('MY Count', myCount);
+
+  return myCount;
   
   
   // $elementDistribution = array();

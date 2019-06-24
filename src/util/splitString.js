@@ -2,7 +2,10 @@
 
 export function getMatchedParts(testString, searchString) {
 
-    const regex = new RegExp(searchString, 'gi')
+  console.log('search str', searchString);
+  
+
+    const regex = new RegExp(`<\s*${searchString}[^>]*>|<\s*/\s*${searchString}>`, 'gi')
 
     let match, parts=[];
     while ((match = regex.exec(testString))) {
