@@ -6,7 +6,8 @@
 This is a React app to fetch html source code from any given url, display all the tags present in that source code along with their count and highlight any selected tag in the source code view.
 
 - Javascript's DOMParser is used to parse the source code and extract tags from it to get their count.
-- Start and end index of tags that needs to be highlighted are found using regex. Using these indexes, the source code string is divided into parts and each part is wrapped in a `span` to give them appropriate styling. 
+- Start and end index of tags that needs to be highlighted are found using regex. Using these indexes, the source code string is divided into parts and each part is wrapped in a `span` to give them appropriate styling.
+- This app uses a proxy server to fetch source code for all the url provided by user. The proxy server is used to avoid blocking of requests by the browser or getting empty responses from servers that don't allow CORS. The proxy server has no other functionality. It just makes a request to the given url and return the response for it. The source code of this server can be found [Here](https://github.com/dydeepak97/proxy-request-server)
 
 
 ### How to use app
