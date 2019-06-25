@@ -1,70 +1,20 @@
-import cheerio from 'cheerio';
-
-const htmlString = `<!DOCTYPE html>
-<html>
-<body>
-<div>
-<h2 some-attribute>Heading</h2>
-<p class="a-class">first para</p>
-<div>
-<p>Second para</p>
-</div>
-</div>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`
-
-export function countTags() {
-  // const $ = cheerio.load(htmlString)
-
-  // console.log($('*'));
-  var $dom = new DOMParser();
-  var doc = $dom.parseFromString(htmlString, 'text/html');
-  var $allElements = doc.querySelectorAll('*');
-  console.log('doc all els', $allElements);
-
-  // return $allElements;
-
-  let myCount = {};
+/**
+ * Utility function to get the count of all html tags from the given string.
+ * Return an object with with tagNames as keys and their count as value.
+ * 
+ * @param {string} sourceCode 
+ */
+export function countTags(sourceCode) {
+  let $dom = new DOMParser(),
+    doc = $dom.parseFromString(sourceCode, 'text/html'),
+    $allElements = doc.querySelectorAll('*'),
+    tagsCount = [];
 
   $allElements.forEach( tag => {
-    console.log(tag.tagName);
     let tagName = tag.tagName.toLowerCase();
     
-    myCount[tagName] ? myCount[tagName]++ : (myCount[tagName] = 1)
+    tagsCount[tagName] ? tagsCount[tagName]++ : (tagsCount[tagName] = 1)
   });
 
-  console.log('MY Count', myCount);
-
-  return myCount;
-  
-  
-  // $elementDistribution = array();
-  // foreach($allElements as $element) {
-  //   if (array_key_exists($element -> tagName, $elementDistribution)) {
-  //     $elementDistribution[$element -> tagName] += 1;
-  //   } else {
-  //     $elementDistribution[$element -> tagName] = 1;
-  //   }
-  // }
-  // print_r($elementDistribution);
-
+  return tagsCount;
 }
-
-// function v1() {
-//   var $dom = new DOMParser();
-//   var doc = $dom.parseFromString(htmlString);
-//   $allElements = doc.getElementsByTagName('*');
-//   $elementDistribution = array();
-//   foreach($allElements as $element) {
-//     if (array_key_exists($element -> tagName, $elementDistribution)) {
-//       $elementDistribution[$element -> tagName] += 1;
-//     } else {
-//       $elementDistribution[$element -> tagName] = 1;
-//     }
-//   }
-//   print_r($elementDistribution);
-// }

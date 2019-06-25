@@ -1,10 +1,24 @@
 body{
   background-color: #282c34;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+.App{
+  height: 100%;
 }
 
 .main{
   position: relative;
-  top: 10vh;
+  height: 100%;
+}
+
+.search-form {
+  position: relative;
+  top: 40vh;
 }
 
 #urlInput {
@@ -12,19 +26,28 @@ body{
   margin: auto;
 }
 
+.result{
+  height: 90vh;
+}
 
+.tags-container {
+  height: 100%;
+  overflow-y: auto;
+}
 
 .source-code-container{
-  height: 800px;
-  width: 800px;
+  height: 100%;
   overflow: auto;
-  /* background: white; */
+  background: white;
   color: black;
+  border: 3px solid red;
+  border-radius: 10px;
 }
 
 .source-code-text{
-  white-space: pre;
+  white-space: pre-wrap;
   text-align: left;
+  overflow-wrap: break-word;
 }
 
 .highlighted {
