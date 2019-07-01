@@ -4,10 +4,10 @@ import { withRouter } from 'react-router-dom';
 
 class SearchUI extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       searchUrl: '',
       errorMessage: ''
     }
@@ -25,7 +25,7 @@ class SearchUI extends React.Component {
       });
       return;
     }
-    
+
     this.props.onSearch(this.state.searchUrl);
     this.props.history.push("/code");
   }
@@ -35,8 +35,8 @@ class SearchUI extends React.Component {
       <div className="App container-fluid text-center">
         <div className='main'>
           <div class="form-group search-form">
-            <h3 className='text-light'>Enter a URL</h3>
-            <input
+            {/* <h3 className='text-light'>Enter a URL</h3> */}
+            {/* <input
               type="text"
               className="form-control form-control-lg mt-3"
               id="urlInput"
@@ -50,7 +50,28 @@ class SearchUI extends React.Component {
             onClick={this.handleFetchUrl}
           >
             Search
-          </button>
+          </button> */}
+            <div class="input-group">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="urlInput"
+                placeholder="Enter URL"
+                value={this.state.searchUrl}
+                onChange={this.handleSearchUrlChange}
+                autoFocus
+              />
+              <div class="input-group-append">
+                <button
+                  className="btn btn-primary"
+                  onClick={this.handleFetchUrl}
+                  id='search-button'
+                >
+                  <i class="fa fa-search" />
+                </button>
+              </div>
+            </div>
+
           </div>
           {
             this.state.errorMessage &&
@@ -59,7 +80,7 @@ class SearchUI extends React.Component {
         </div>
 
       </div >
-      
+
     );
   }
 

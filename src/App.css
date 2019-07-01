@@ -19,11 +19,21 @@ body{
 .search-form {
   position: relative;
   top: 40vh;
+  width: 40%;
+  margin: auto;
 }
 
 #urlInput {
-  width: 80%;
   margin: auto;
+}
+
+#urlInput::placeholder {
+  color: gray;
+  opacity: 0.5;
+}
+
+#search-button {
+  padding: 0 64px;
 }
 
 .result{
